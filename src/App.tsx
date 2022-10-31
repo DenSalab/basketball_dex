@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect} from 'react';
+import {useAppDispatch} from "./common/hooks/reduxHooks";
+import {Route, Routes} from "react-router-dom";
+import {Players} from "./modules/players/components/Players/Players";
+import {TeamsContainer} from "./modules/teams/components/TeamsContainer";
+import {Main} from "./pages/Main/Main";
+import {authTC} from "./modules/authorization/asyncActions";
+import {SignIn} from "./modules/authorization/components/SignIn/SignIn";
+import {ErrorPage} from "./pages/ErrorPage/ErrorPage";
+import {SignUp} from "./modules/authorization/components/SignUp/SignUp";
+import {NewTeam} from "./modules/teams/components/NewTeam/NewTeam";
+import {TeamPage} from "./modules/teams/components/TeamPage/TeamPage";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        if (localStorage.getItem('token')) {
+            // инициализация по логину/паролю, т.к. только по токену не удается.
+            const token = localStorage.getItem('token') || undefined;
+            dispatch(authTC('KotPulemet', '1234567890', token));
+        }
+    }, [])
+
+    return (
+        <>
+            <Routes>
+                <Route path={"/"} element={<Main/>}>
+                    <Route path={'/teams'} element={<TeamsContainer/>}/>
+                    <Route path={'/teams/add'} element={<NewTeam/>}/>
+                    <Route path={'/teams/:id'} element={<TeamPage/>}/>
+
+                    <Route path={'/players'} element={<Players/>}/>
+                </Route>
+                <Route path={'/sign_in'} element={<SignIn/>}/>
+                <Route path={'/sign_up'} element={<SignUp/>}/>
+                <Route path={'*'} element={<ErrorPage/>}/>
+            </Routes>
+        </>
+    );
 }
 
 export default App;

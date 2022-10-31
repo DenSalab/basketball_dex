@@ -1,0 +1,25 @@
+@import './src/common/constants/scss/default_variables';
+
+.wrapper{
+  background-color: $white;
+  border-radius: 15px;
+  text-align: center;
+  padding: 48px;
+  margin: 20px auto;
+  max-width: 550px;
+img{
+  width: 100%;
+}
+  h1{
+    //font-weight: 800;
+    font-size: 36px;
+    line-height: 49px;
+
+    color: $lightest_red;
+  }
+  span{
+    font-size: 24px;
+    line-height: 33px;
+    color: $grey;
+  }
+}

@@ -1,0 +1,67 @@
+.item {
+  background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+  width: 30%;
+
+  &:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+
+  .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      height: 80%;
+      width: 100%;
+
+      img {
+        margin: 0 auto;
+        max-width: 150px;
+        max-height: 150px;
+      }
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      height: 20%;
+      width: 100%;
+      background: #303030;
+      border-radius: 0 0 4px 4px;
+
+      .name, .foundation {
+        font-weight: 500;
+        line-height: 25px;
+        margin: 2px;
+      }
+
+      .name {
+        font-size: 18px;
+        color: #ffffff;
+      }
+
+      .foundation {
+        font-size: 14px;
+        color: #9C9C9C;
+      }
+    }
+  }
+}

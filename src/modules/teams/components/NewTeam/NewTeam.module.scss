@@ -1,0 +1,52 @@
+@import './src/common/constants/scss/default_variables';
+
+.wrapper {
+  background-color: $white;
+  max-width: 1140px;
+  display: flex;
+  flex-direction: row;
+  padding: 40px;
+  margin: 20px auto;
+  box-sizing: border-box;
+  border-radius: 10px;
+
+  .add_photo {
+    display: flex;
+    width: 40%;
+    padding-right: 40px;
+
+    .photo {
+      background-color: $light_grey;
+      width: 300px;
+      height: 250px;
+      //height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      opacity: .5;
+      background-size: cover !important;
+
+      img {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .mainForm {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+
+    .buttons {
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      button {
+        width: 40%;
+      }
+    }
+  }
+}

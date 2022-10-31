@@ -1,0 +1,80 @@
+@import './src/common/constants/scss/default_variables';
+
+.inputBox {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    //margin-bottom: 4px;
+    min-width: 320px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus{
+    -webkit-text-fill-color: #000;
+    -webkit-box-shadow: 0 0 0 1000px #F6F6F6 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill:hover{
+    -webkit-box-shadow: 0 0 0 1000px #D9D9D9 inset;
+}
+
+.superInput {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    font: inherit;
+    background: #F6F6F6 !important;
+    border: none;
+    border-radius: 4px;
+    outline: 0;
+    outline-offset: 0;
+}
+
+.superInput:focus {
+    background: $lightest_grey_2;
+    box-shadow: 0 0 5px $lightest_grey_1;
+}
+
+.superInput:hover {
+    background-color: $lightest_grey_1 !important;
+}
+.superInput:disabled {
+    color: $lightest_grey_1;
+}
+
+.errorInput,
+.errorInput:hover,
+.errorInput:focus {
+    border-bottom: 2px solid $red;
+}
+
+.error {
+    margin-top: -21px;
+
+    color: $red;
+}
+
+.eye,
+.eyeSlash {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    width: 20px;
+    height: 20px;
+
+    //opacity: 0.5;
+    background: url('svg/eye-solid.svg') 0 0 no-repeat;
+}
+
+.eyeSlash {
+    background: url('svg/eye-slash-solid.svg') 0 0 no-repeat;
+}
+
+.eye:hover,
+.eyeSlash:hover {
+    cursor: pointer;
+
+    //opacity: 0.7;
+}

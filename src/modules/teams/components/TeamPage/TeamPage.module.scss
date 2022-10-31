@@ -1,0 +1,66 @@
+@import './src/common/constants/scss/default_variables';
+
+.wrapper {
+  background-color: $white;
+  width: 100%;
+  margin: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;;
+
+    .buttons {
+      input {
+        padding-left: 15px;
+      }
+    }
+  }
+
+  .teamCard {
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(276.45deg, #707070 0%, #393939 100.28%);
+    border-radius: 0 0 10px 10px;
+    //height: 400px;
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40%;
+
+      img {
+        width: 40%;
+        height: auto;
+      }
+    }
+
+    .info {
+      width: 60%;
+
+      h2 {
+        font-size: 36px;
+        line-height: 49px;
+        color: $white;
+      }
+
+      .description {
+        span {
+          display: flex;
+          flex-direction: column;
+          font-size: 24px;
+          line-height: 33px;
+          color: $white;
+          margin-bottom: 10px;
+          span {
+            font-size: 18px;
+            line-height: 25px;
+          }
+        }
+      }
+    }
+  }
+}
