@@ -1,10 +1,12 @@
 import {authAPI} from "../../api/authorization/authAPI";
 import {setAuth, setUserData} from "./authSlice";
 import {AppThunk} from "../../configs/redux/store";
+import {setLoading} from "../../app/appSlice";
 
 export const authTC = (login: string, password: string, token?: string): AppThunk =>
     async (dispatch) => {
         try {
+            dispatch(setLoading(true));
             const response = await authAPI.signIn({login, password}, token);
             localStorage.setItem('token', response.token)
             dispatch(setAuth(true))
@@ -12,6 +14,8 @@ export const authTC = (login: string, password: string, token?: string): AppThun
         } catch (e) {
             dispatch(setAuth(false))
             console.log('authorization:', e)
+        } finally {
+            dispatch(setLoading(false));
         }
     }
 

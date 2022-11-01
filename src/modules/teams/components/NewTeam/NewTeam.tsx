@@ -26,8 +26,6 @@ export const NewTeam = () => {
         }
     });
     const onSubmit = (data: any) => {
-        // dispatch(authTC(data.login, data.password));
-        console.log(data)
         const token = localStorage.getItem('token');
         // @ts-ignore
         dispatch(addTeamTC(data, token))

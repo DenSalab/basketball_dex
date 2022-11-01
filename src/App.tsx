@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useAppDispatch} from "./common/hooks/reduxHooks";
+import {useAppDispatch, useAppSelector} from "./common/hooks/reduxHooks";
 import {Route, Routes} from "react-router-dom";
 import {Players} from "./modules/players/components/Players/Players";
 import {TeamsContainer} from "./modules/teams/components/TeamsContainer";
@@ -10,10 +10,12 @@ import {ErrorPage} from "./pages/ErrorPage/ErrorPage";
 import {SignUp} from "./modules/authorization/components/SignUp/SignUp";
 import {NewTeam} from "./modules/teams/components/NewTeam/NewTeam";
 import {TeamPage} from "./modules/teams/components/TeamPage/TeamPage";
+import {Spinner} from "./common/components/Spinner/Spinner";
 
 
 function App() {
     const dispatch = useAppDispatch();
+    const isLoading = useAppSelector(state => state.app.isLoading);
 
     useEffect(() => {
         if (localStorage.getItem('token')) {
@@ -37,6 +39,7 @@ function App() {
                 <Route path={'/sign_up'} element={<SignUp/>}/>
                 <Route path={'*'} element={<ErrorPage/>}/>
             </Routes>
+            {isLoading && <Spinner/>}
         </>
     );
 }
