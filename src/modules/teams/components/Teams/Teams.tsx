@@ -68,7 +68,7 @@ export const Teams: React.FC<TeamsProps> = (
                     nextLabel=">"
                     onPageChange={handlePageClick}
                     pageRangeDisplayed={4}
-                    pageCount={pageCount || 24}
+                    pageCount={pageCount}
                     previousLabel="<"
                     renderOnZeroPageCount={() => {
                     }}
@@ -80,6 +80,7 @@ export const Teams: React.FC<TeamsProps> = (
                     value={selectValue}
                     menuPlacement={'auto'}
                     onChange={(e) => setItemsPerPage(e!.value)}
+                    isDisabled={!currentItems.length}
                 />
             </div>
         </div>

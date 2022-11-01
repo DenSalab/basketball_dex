@@ -37,7 +37,7 @@ export const TeamsContainer = () => {
 
     const handlePageClick = (event: { selected: number }) => {
         const newOffset = (event.selected * itemsPerPage) % items.length;
-        setCurrentPage(event.selected + 1)
+        setCurrentPage(event.selected)
         setItemOffset(newOffset);
     };
 
