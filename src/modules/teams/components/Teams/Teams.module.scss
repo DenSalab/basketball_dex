@@ -19,8 +19,8 @@
 
   .cards {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
+    gap: 15px;
   }
 
   .paginator {

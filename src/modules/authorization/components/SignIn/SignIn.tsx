@@ -1,23 +1,16 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import s from './SignIn.module.scss';
 import basket from '../../../../assets/images/basket.png';
 import {useForm, Controller} from "react-hook-form";
 import SuperButton from "../../../../common/components/SuperButton/SuperButton";
 import SuperInputText from "../../../../common/components/SuperInputText/SuperInputText";
 import {Link, useNavigate} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../../../common/hooks/reduxHooks";
+import {useAppDispatch} from "../../../../common/hooks/reduxHooks";
 import {authTC} from "../../asyncActions";
 
 export const SignIn = () => {
     const dispatch = useAppDispatch();
-    const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        if (isLoggedIn) {
-            return navigate("/");
-        }
-    }, [isLoggedIn]);
 
     const {control, handleSubmit} = useForm({
         defaultValues: {
@@ -27,6 +20,7 @@ export const SignIn = () => {
     });
     const onSubmit = (data: { login: string, password: string }) => {
         dispatch(authTC(data.login, data.password));
+        navigate('/');
     };
 
     return (

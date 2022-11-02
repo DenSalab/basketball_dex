@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "./common/hooks/reduxHooks";
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import {Players} from "./modules/players/components/Players/Players";
 import {TeamsContainer} from "./modules/teams/components/TeamsContainer";
 import {Main} from "./pages/Main/Main";
@@ -12,10 +12,10 @@ import {NewTeam} from "./modules/teams/components/NewTeam/NewTeam";
 import {TeamPage} from "./modules/teams/components/TeamPage/TeamPage";
 import {Spinner} from "./common/components/Spinner/Spinner";
 
-
 function App() {
     const dispatch = useAppDispatch();
     const isLoading = useAppSelector(state => state.app.isLoading);
+    const isLoggedIn = useAppSelector(state => state.auth.isLoggedIn);
 
     useEffect(() => {
         if (localStorage.getItem('token')) {
@@ -28,15 +28,20 @@ function App() {
     return (
         <>
             <Routes>
-                <Route path={"/"} element={<Main/>}>
-                    <Route path={'/teams'} element={<TeamsContainer/>}/>
-                    <Route path={'/teams/add'} element={<NewTeam/>}/>
-                    <Route path={'/teams/:id'} element={<TeamPage/>}/>
-
-                    <Route path={'/players'} element={<Players/>}/>
-                </Route>
-                <Route path={'/sign_in'} element={<SignIn/>}/>
-                <Route path={'/sign_up'} element={<SignUp/>}/>
+                {
+                    isLoggedIn
+                        ? <Route path={"/"} element={<Main/>}>
+                            <Route index element={<Navigate to={'teams'} replace/>}/>
+                            <Route path={'teams'} element={<TeamsContainer/>}/>
+                            <Route path={'teams/add'} element={<NewTeam/>}/>
+                            <Route path={'teams/:id'} element={<TeamPage/>}/>
+                            <Route path={'players'} element={<Players/>}/>
+                        </Route>
+                        : <Route path={"/"}>
+                            <Route path={'sign_in'} element={<SignIn/>}/>
+                            <Route path={'sign_up'} element={<SignUp/>}/>
+                        </Route>
+                }
                 <Route path={'*'} element={<ErrorPage/>}/>
             </Routes>
             {isLoading && <Spinner/>}
@@ -45,3 +50,4 @@ function App() {
 }
 
 export default App;
+

@@ -5,8 +5,6 @@ import teams from './svg/Teams';
 import players from './svg/Players';
 import signout from './svg/Signout';
 
-import SuperButton from "../../common/components/SuperButton/SuperButton";
-
 type PropsType = {
     signOut: () => void
 }

@@ -51,9 +51,8 @@ export const deleteTeamTC = (id: string, token: string): AppThunk =>
     async (dispatch) => {
         try {
             dispatch(setLoading(true));
-            const result = await teamsAPI.deleteTeam(id, token);
-            // dispatch(setTeamsData(result))
-            dispatch(setCurrentTeam({} as TeamDto))
+            await teamsAPI.deleteTeam(id, token);
+            dispatch(setCurrentTeam({} as TeamDto));
         } catch (e) {
             console.log('deleteTeam:', e)
         }finally {

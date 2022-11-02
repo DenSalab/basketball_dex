@@ -29,6 +29,7 @@ export const NewTeam = () => {
         const token = localStorage.getItem('token');
         // @ts-ignore
         dispatch(addTeamTC(data, token))
+        navigate(-1);
     };
 
     // т.к. нет возможности загружать файл на сервер, вместо url отправится base64
