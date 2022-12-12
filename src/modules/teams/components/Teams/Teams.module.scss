@@ -1,4 +1,4 @@
-@import '../../../../common/constants/scss/default_variables';
+@import "../../../../common/constants/scss/default_variables";
 
 .wrapper {
   background-color: $lightest_grey_2;
@@ -12,7 +12,7 @@
     justify-content: space-between;
     margin-bottom: 10px;
 
-    .search{
+    .search {
       background-color: $white !important;
     }
   }

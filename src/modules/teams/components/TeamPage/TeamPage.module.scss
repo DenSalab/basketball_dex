@@ -1,4 +1,4 @@
-@import './src/common/constants/scss/default_variables';
+@import "./src/common/constants/scss/default_variables";
 
 .wrapper {
   background-color: $white;
@@ -10,7 +10,7 @@
   .header {
     display: flex;
     justify-content: space-between;
-    padding: 20px;;
+    padding: 20px;
 
     .breadcrumbs {
       .link {

@@ -1,2 +1,2 @@
 // селекторы из стора для этого модуля
-export default {}
+export default {};

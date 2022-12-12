@@ -1,21 +1,21 @@
 export interface LoginRequest {
-    login: string;
-    password: string;
+  login: string;
+  password: string;
 }
 
 export interface LoginResult {
-    name: string,
-    avatarUrl: string,
-    token: string
+  name: string;
+  avatarUrl: string;
+  token: string;
 }
 
 export interface ChangeUserRequest {
-    userName: string;
-    avatarUrl: string;
+  userName: string;
+  avatarUrl: string;
 }
 
 export interface RegisterUserRequest {
-    userName: string;
-    login: string;
-    password: string;
+  userName: string;
+  login: string;
+  password: string;
 }

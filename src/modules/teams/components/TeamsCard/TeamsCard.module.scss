@@ -22,6 +22,7 @@
     .logo {
       display: flex;
       align-items: center;
+      justify-content: center;
       height: 80%;
       width: 100%;
 
@@ -42,7 +43,8 @@
       background: #303030;
       border-radius: 0 0 4px 4px;
 
-      .name, .foundation {
+      .name,
+      .foundation {
         font-weight: 500;
         line-height: 25px;
         margin: 2px;
@@ -55,7 +57,7 @@
 
       .foundation {
         font-size: 14px;
-        color: #9C9C9C;
+        color: #9c9c9c;
       }
     }
   }

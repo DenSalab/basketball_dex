@@ -1,4 +1,4 @@
-@import './src/common/constants/scss/default_variables';
+@import "./src/common/constants/scss/default_variables";
 
 .wrapper {
   background-color: $white;
@@ -24,11 +24,18 @@
       justify-content: center;
       align-items: center;
       border-radius: 10px;
-      opacity: .5;
+      opacity: 0.5;
       background-size: cover !important;
 
-      img {
+      .addPhotoIcon {
+        width: 75px;
+        height: 75px;
+        fill: $lightest_grey_2;
+        fill-rule: evenodd;
+        clip-rule: evenodd;
+
         &:hover {
+          fill: $white;
           cursor: pointer;
         }
       }

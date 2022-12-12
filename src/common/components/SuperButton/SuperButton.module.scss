@@ -1,4 +1,4 @@
-@import './src/common/constants/scss/default_variables';
+@import "./src/common/constants/scss/default_variables";
 
 .default {
   outline: 0;
@@ -69,7 +69,7 @@
   }
   &:active {
     background-color: $light_grey;
-    border-color: $light_grey;;
+    border-color: $light_grey;
     color: $grey;
   }
 }

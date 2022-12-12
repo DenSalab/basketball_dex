@@ -4,26 +4,26 @@ import React, {
   InputHTMLAttributes,
   KeyboardEvent,
   useState,
-} from 'react'
-import s from './SuperInputText.module.scss'
+} from "react";
+import s from "./SuperInputText.module.scss";
 
 // тип пропсов обычного инпута
 type DefaultInputPropsType = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
->
+>;
 
 // здесь мы говорим что у нашего инпута будут такие же пропсы как у обычного инпута
 // (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputPropsType)
 type SuperInputTextPropsType = DefaultInputPropsType & {
   // и + ещё пропсы которых нет в стандартном инпуте
-  onChangeText?: (value: string) => void
-  onEnter?: () => void
-  error?: string
-  spanClassName?: string
-  showEye?: boolean
-  type?: string
-}
+  onChangeText?: (value: string) => void;
+  onEnter?: () => void;
+  error?: string;
+  spanClassName?: string;
+  showEye?: boolean;
+  type?: string;
+};
 
 const SuperInputText: React.FC<SuperInputTextPropsType> = ({
   type,
@@ -39,30 +39,34 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = ({
 }) => {
   const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
     onChange && // если есть пропс onChange
-      onChange(e) // то передать ему е (поскольку onChange не обязателен)
+      onChange(e); // то передать ему е (поскольку onChange не обязателен)
 
-    onChangeText && onChangeText(e.currentTarget.value)
-  }
+    onChangeText && onChangeText(e.currentTarget.value);
+  };
   const onKeyPressCallback = (e: KeyboardEvent<HTMLInputElement>) => {
-    onKeyPress && onKeyPress(e)
+    onKeyPress && onKeyPress(e);
 
     onEnter && // если есть пропс onEnter
-      e.key === 'Enter' && // и если нажата кнопка Enter
-      onEnter() // то вызвать его
-  }
+      e.key === "Enter" && // и если нажата кнопка Enter
+      onEnter(); // то вызвать его
+  };
 
-  const finalSpanClassName = `${s.error} ${spanClassName ? spanClassName : ''}`
-  const finalInputClassName = `${s.superInput} ${error ? s.errorInput : className}`
+  const finalSpanClassName = `${s.error} ${spanClassName ? spanClassName : ""}`;
+  const finalInputClassName = `${s.superInput} ${
+    error ? s.errorInput : className
+  }`;
 
   // показать/скрыть пароль
-  const [show, setShow] = useState(false)
-  const toggleShow = () => setShow(!show)
+  const [show, setShow] = useState(false);
+  const toggleShow = () => setShow(!show);
 
   return (
     <div className={s.inputBox}>
-      {type === 'password' && <div className={show ? s.eyeSlash : s.eye} onClick={toggleShow} />}
+      {type === "password" && (
+        <div className={show ? s.eyeSlash : s.eye} onClick={toggleShow} />
+      )}
       <input
-        type={type === 'password' && !show ? 'password' : 'text'}
+        type={type === "password" && !show ? "password" : "text"}
         onChange={onChangeCallback}
         onKeyDown={onKeyPressCallback}
         className={finalInputClassName}
@@ -70,7 +74,7 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = ({
       />
       {error && <span className={finalSpanClassName}>{error}</span>}
     </div>
-  )
-}
+  );
+};
 
-export default SuperInputText
+export default SuperInputText;
